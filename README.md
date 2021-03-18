@@ -12,10 +12,16 @@ Algorithms and the Isaac SDK & Sim.
 # Prerequisites
 ## We will use a archived version of the Isaac SDK: 2020.1 since version 2020.2 introduced many structural changes to the SDK
 
-While the installation is pretty well documented we will still give some recommendations here.
+
+
+
+First you will have to download both the Isaac SDK and the IsaacSim which you can find here:
+https://developer.nvidia.com/isaac/downloads (klick on "archive" to find previous versions)
 
 
 Once you have downloaded the Isaac SDK you will find a script /isaac/engine/build/scripts/install_dependencies.sh that automatically installs all dependencies on your system
+### While the installation is pretty well documented we will still give some recommendations here.
+
 
 * Currently only Ubuntu 18.04 LTS is supported
 * Please make sure to install recent NVIDIA graphics card drivers on your workstation -> version 440 is recommended
