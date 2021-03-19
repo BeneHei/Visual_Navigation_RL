@@ -33,17 +33,39 @@ Once you have downloaded the Isaac SDK you will find a script /isaac/engine/buil
 # Your first Project
 
 Now we will show you a exemplary basic interaction project using python, Isaac and Isaac Sim. In this repository you will find a very basic example 
-on how to create a RL state flow. As you might know, Reinforcement Learning is based on continous interaction between an agent and its environment:
+on how to create a RL state flow. But first we recommend working through the basic getting started part of the isaac SDK
+https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html to learn about the bulding process of Isaac Apps and specifically the part aobut 
+creating a python app https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html#python-application-support since our example project is also written in python.
+
+
+As you might know, Reinforcement Learning is based on continous interaction between an agent and its environment:
+
+
+![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/RL_interact.png)
 
 
 
-
-
-We will need to provide the following parts:
+We will need to implement the following parts:
 
 * A reward signal provided by the environment
 * A Agent that is able to take actions
 * A way to enable an agent to observe its environment
+
+
+In our sample application called py_example_task, all that is given as:
+
+
+* A constant dummy reward 
+* Linear and Angular target velocity as actions
+* The current pose of the robot as observation 
+
+
+The actions will be send to the Isaac Sim which will then use those actions to accellerate the robot
+The robot pose will be received from the Isaac Sim
+
+
+
+
 
 
 
@@ -63,4 +85,6 @@ Resources
 [4] https://developer.nvidia.com/isaac/downloads
 [5] https://developer.nvidia.com/login
 [6] https://id.unity.com/en/conversations/951360fa-40fa-4423-919f-a349bf23a3a401af
-[7] https://forum.unity.com/threads/unity-hub-v-1-3-2-is-now-available.594139/
+[7] https://forum.unity.com/threads/unity-hub-v-1-3-2-is-now-available.594139
+[8] https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html
+[9] https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html#python-application-support
