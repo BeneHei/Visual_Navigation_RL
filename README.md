@@ -65,13 +65,22 @@ The robot pose will be received from the Isaac Sim
 
 
 
+## Setting up your environment in Unity
+
+The introduced message protos for the communication with the Isaac Sim need to be specified inside of the Unity App. You can find more information about how to use the Unity
+App here: https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#getting-started-with-editor-mode
 
 
 
+![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Robot.PNG)
+
+![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic.PNG)
+
+![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic_receiver.PNG)
 
 
 
-## The Pro
+## 
 
 
 
@@ -88,3 +97,4 @@ Resources
 [7] https://forum.unity.com/threads/unity-hub-v-1-3-2-is-now-available.594139
 [8] https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html
 [9] https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html#python-application-support
+[10] https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#getting-started-with-editor-mode
