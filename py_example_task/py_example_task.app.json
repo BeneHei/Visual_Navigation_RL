@@ -1,0 +1,97 @@
+{
+  "name": "py_example_task",
+  "modules": [
+    "navigation",
+    "ml"
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "name": "py_controller",
+        "components": [
+          {
+            "name": "message_ledger",
+            "type": "isaac::alice::MessageLedger"
+          }
+        ]
+      },
+      {
+        "name": "simulation",
+        "subgraph": "packages/navsim/apps/navsim_navigation.subgraph.json"
+      },
+      {
+        "name": "subgraph",
+        "components": [
+          {
+            "name": "message_ledger",
+            "type": "isaac::alice::MessageLedger"
+          },
+          {
+            "name": "interface",
+            "type": "isaac::alice::Subgraph"
+          }
+        ]
+      },
+      {
+        "name": "Teleportation",
+        "components": [
+          {
+            "name": "MessageLedger",
+            "type": "isaac::alice::MessageLedger"
+          },
+          {
+            "name": "random",
+            "type": "isaac::alice::Random"
+          },
+          {
+            "name": "Teleport_robot",
+            "type": "isaac::ml::Teleportation"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "source": "Teleportation/Teleport_robot/rigid_command",
+        "target": "simulation.interface/input/teleport"
+      }
+    ]
+  },
+  "config": {
+    "py_controller": {
+      "PyCodelet": {
+        "name": "my_first_pycontroller",
+        "start_position" : [-2,0.018,0]
+      }
+    },
+    "Teleportation": {
+      "Teleport_robot": {
+        "name": "robot",
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          0,
+          0,
+          0
+        ],
+        "min_roll": 0.0,
+        "max_roll": 0.0,
+        "min_pitch": 0.0,
+        "max_pitch": 0.0,
+        "min_yaw": 0.0,
+        "max_yaw": 0.0,
+        "enable_on_relative_frame": true,
+        "enable_translation_x": true,
+        "enable_translation_y": false,
+        "enable_translation_z": true,
+        "enable_roll": false,
+        "enable_pitch": false,
+        "enable_yaw": true,
+        "tick_period": "10.0"
+      }
+    }
+  }
+}
