@@ -19,7 +19,8 @@ First you will have to download both the Isaac SDK and the IsaacSim which you ca
 https://developer.nvidia.com/isaac/downloads (klick on "archive" to find previous versions)
 
 
-Once you have downloaded the Isaac SDK you will find a script /isaac/engine/build/scripts/install_dependencies.sh that automatically installs all dependencies on your system
+Once you have downloaded the Isaac SDK, you can extract it to a folder of your choice. You will find a script called  **/isaac/engine/build/scripts/install_dependencies.sh**
+that automatically installs all dependencies on your system
 ### While the installation is pretty well documented we will still give some recommendations here
 
 
@@ -28,6 +29,44 @@ Once you have downloaded the Isaac SDK you will find a script /isaac/engine/buil
 * In our case CUDA 10.1 has shown to be the most stable version 
 * To be able to create you own environments you will have to create a Unity account and install UnityHub : https://id.unity.com/en/conversations/951360fa-40fa-4423-919f-a349bf23a3a401af  https://forum.unity.com/threads/unity-hub-v-1-3-2-is-now-available.594139/
 
+
+After you completed the installation process, you can run one of the many sample applications provided by the SDK by running the **bazel run** command
+**inside of your isaac folder** for example:
+
+```
+bob@desktop:~/isaac$ bazel run //apps/samples/stereo_dummy
+```
+
+
+
+## Setting up your environment in Unity
+
+The introduced message protos for the communication with the Isaac Sim need to be specified inside of the Unity App. You can find more information about how to use the Unity
+App here: https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#getting-started-with-editor-mode
+
+
+
+![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Robot.PNG)
+
+You can find the Str robot inside **Packages/NVIDIA Isaac Sim for Unity 3d (Samples)/Robots** it comes equipped with two Lidar sensors, a frontal RGB-D camera and a
+differential drive base simulation
+
+![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic.PNG)
+
+If you want to know where to send, or where to receive messages you can simply leftklick on the corresponding sensors, here we highlight where to receive the images of the color
+camera. Camera images can thus be received under **navsim/output/color**. 
+
+![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic_receiver.PNG)
+
+Messages that controll the STR robot have to be sent to **navsim/input/base_command**
+If you want these topics to have different names you can simply change them inside the unity editor. 
+
+
+### After you finished creating your unity environment in the editor mode, we recommend building the application
+
+https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#build
+
+When the build process is finished, you can run your environment with the **--timeScale** command, which basically scales the speed of the physics computation. 
 
 
 # Your first Project
@@ -65,26 +104,9 @@ The robot pose will be received from the Isaac Sim
 
 
 
-## Setting up your environment in Unity
-
-The introduced message protos for the communication with the Isaac Sim need to be specified inside of the Unity App. You can find more information about how to use the Unity
-App here: https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#getting-started-with-editor-mode
 
 
-
-![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Robot.PNG)
-
-![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic.PNG)
-
-![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic_receiver.PNG)
-
-
-
-## 
-
-
-
-Resources
+## Resources
 =========
 
 
@@ -98,3 +120,4 @@ Resources
 [8] https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html
 [9] https://docs.nvidia.com/isaac/archive/2020.1/doc/getting_started.html#python-application-support
 [10] https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#getting-started-with-editor-mode
+[11] https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#build
