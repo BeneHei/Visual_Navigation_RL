@@ -46,21 +46,27 @@ App here: https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.ht
 
 
 
-![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Robot.PNG)
+![Unity Robot](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Robot.PNG)
 
-You can find the Str robot inside **Packages/NVIDIA Isaac Sim for Unity 3d (Samples)/Robots** it comes equipped with two Lidar sensors, a frontal RGB-D camera and a
-differential drive base simulation
+You can find the Str robot inside **Packages/NVIDIA Isaac Sim for Unity 3d (Samples)/Robots** it comes equipped with two Lidar sensors, a frontal RGB-D camera and 
+a differential drive base simulation
 
-![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic.PNG)
+![Unity Topics1](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic.PNG)
 
 If you want to know where to send, or where to receive messages you can simply leftklick on the corresponding sensors, here we highlight where to receive the images of the color
 camera. Camera images can thus be received under **navsim/output/color**. 
 
-![Basic RL interaction](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic_receiver.PNG)
+![Unity Topics2](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Topic_receiver.PNG)
 
 Messages that controll the STR robot have to be sent to **navsim/input/base_command**
 If you want these topics to have different names you can simply change them inside the unity editor. 
 
+Even simpler is the use of the already provided **small_warehouse** scene, this scene comes with almost everything you need to try out our example project.
+You just have to add a **Teleport script** to the robot you want to teleport when the reset function is triggered. In the end your robot should have the following 
+parts:
+
+
+![Unity Topics3](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/nity_topics_example_project.png.PNG)
 
 ### After you finished creating your unity environment in the editor mode, we recommend building the application
 
