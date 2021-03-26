@@ -124,6 +124,24 @@ Then run the following command inside your isaac folder:
 bob@desktop:~/isaac$ bazel run //apps/py_example_task
 ```
 
+
+## Some of our Results
+
+We used two different modalities throughout our experiments. The first one uses the simulated lidar sensor called **Raycast Lidar Flatscan (Script)** in IsaacSim
+Unity. The second one uses simulated RGB and Depth Cameras.
+
+When concatenating four camera images the following state representation can be used:
+
+
+<img src="https://github.com/BeneHei/Visual_Navigation_RL/blob/main/InputStates_DepthandGray.gif" width="300px">
+
+
+<img src="https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Depth_short.gif" width="300px">
+
+
+
+
+
 ## Resources
 =========
 
