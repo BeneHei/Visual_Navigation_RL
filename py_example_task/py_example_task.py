@@ -35,7 +35,7 @@ class ExampleTaskENV(gym.Env):
     high = np.array([np.inf] * self.input_shape)
     # our actions are continuous now, i.e. linear and angular velocity for the isaac joystick command in the range between -1 and 1
     self.action_space      = spaces.Box(np.array([-1, -1]), np.array([1, 1]), dtype=np.float32)
-    self.observation_space = spaces.Box(-high, high, dtype=np.int32)
+    self.observation_space = spaces.Box(-high, high, dtype=np.float64)
     
   
   def reset(self, test=False):
@@ -57,8 +57,8 @@ class ExampleTaskENV(gym.Env):
 
     #save the state pubtime
     self.latest_state_pubtime = state_buffer.pubtime # reset the publish timestamp of the latest message to avoid using this message twice
-    state_tensor = np.frombuffer(state_buffer.buffers[0], dtype=np.uint16)
-    state_tensor = np.array(state_tensor).astype(np.int32)
+    state_tensor = np.frombuffer(state_buffer.buffers[0], dtype=np.float64)
+    state_tensor = np.array(state_tensor).astype(np.float64)
     time.sleep(0.05)
     return state_tensor
 
@@ -89,8 +89,8 @@ class ExampleTaskENV(gym.Env):
     # save the state pubtime
     self.latest_state_pubtime = state_buffer.pubtime # reset the publish timestamp of the latest message to avoid using this message twice
     # cast the buffer to a tensor, this is our observation resulting from the given action
-    state_tensor = np.frombuffer(state_buffer.buffers[0], dtype=np.uint16)
-    state_tensor = np.array(state_tensor).astype(np.int32)
+    state_tensor = np.frombuffer(state_buffer.buffers[0], dtype=np.float64)
+    state_tensor = np.array(state_tensor).astype(np.float64)
 
     #### now we check the result 
     # wait for a reply from the simulation
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     time.sleep(1)
 
     # we initialize the env with a reference to our isaac app:
-    env = ExampleTaskENV(app,36)
+    env = ExampleTaskENV(app,2)
 
 
     ### and we start with basic interaction:
@@ -176,9 +176,10 @@ if __name__ == '__main__':
     print("now we randomly sample actions and print the result")
 
     for x in range(10):
-      for i in range(100):
+      for i in range(10):
         rnd_action = np.random.random(2)*2 -1
         state = env.step(rnd_action)
+        print("state: ", state)
       env.reset()
 
 

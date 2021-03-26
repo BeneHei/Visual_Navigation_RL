@@ -104,6 +104,7 @@ class PyController(Codelet):
             #print(pose_json)
             robot_trans = pose_json['bodies'][0]['refTBody']['translation']
             # print("received a pose message from simulation: ", robot_trans)
+            self.robot_translation = np.array([robot_trans['x'],robot_trans['y'],robot_trans['z']])
             rx_message.buffers.clear()
 
     def process_incoming_env_messages(self):
@@ -177,12 +178,12 @@ class PyController(Codelet):
 
     def send_state_tensor_to_env(self):
     # sends a dummy state to the env (used in step() )
-        dummy_state = np.array([1,1]) 
+        dummy_state = np.array([self.robot_translation[0],self.robot_translation[1]]) 
         send_msg                        = Message.create_message_builder("TensorProto")
-        send_msg.proto.elementType      = "uint16"
+        send_msg.proto.elementType      = "float64"
         send_msg.proto.sizes            = dummy_state.shape
         send_msg.proto.dataBufferIndex  = 0
-        send_msg.buffers                = [np.array(dummy_state).astype(np.uint16)]
+        send_msg.buffers                = [np.array(dummy_state).astype(np.float64)]
         self.app.publish("py_controller", "PyCodelet",  "state_tensor", send_msg)
 
     def reset(self):
