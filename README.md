@@ -133,13 +133,14 @@ Unity. The second one uses simulated RGB and Depth Cameras.
 When concatenating four camera images the following state representation can be used:
 
 
-<img src="https://github.com/BeneHei/Visual_Navigation_RL/blob/main/InputStates_DepthandGray.gif" width="300px">
+<img src="https://github.com/BeneHei/Visual_Navigation_RL/blob/main/InputStates_DepthandGray.gif" width="600px">
 
 
-<img src="https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Depth_short.gif" width="300px">
+<img src="https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Depth_short.gif" width="600px">
 
 
 
+<img src="https://github.com/BeneHei/Visual_Navigation_RL/blob/main/RGB_Short.gif" width="600px">
 
 
 ## Resources
