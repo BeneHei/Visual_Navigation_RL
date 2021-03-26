@@ -66,7 +66,7 @@ You just have to add a **Teleport script** to the robot you want to teleport whe
 parts:
 
 
-![Unity Topics3](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_topics_example_project.png.PNG)
+![Unity Topics3](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_topics_example_project.PNG)
 
 ### After you finished creating your unity environment in the editor mode, we recommend building the application
 
