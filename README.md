@@ -103,8 +103,20 @@ The actions will be send to the Isaac Sim which will then use those actions to a
 The robot pose will be received from the Isaac Sim
 
 
+### To run our demo RL application, you have to put the provided py_example_task folder into your local isaac/apps folder
+
+Then start a unity simulation (either in editor or in play mode) that has the following parts available:
+
+* A differential base simulation
+* A pose publisher (bodies)
+* A Teleport script
+
+Then run the following command inside your isaac folder:
 
 
+```
+bob@desktop:~/isaac$ bazel run //apps/py_example_task
+```
 
 ## Resources
 =========
