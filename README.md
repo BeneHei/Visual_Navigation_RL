@@ -41,9 +41,39 @@ bob@desktop:~/isaac$ bazel run //apps/samples/stereo_dummy
 
 ## Setting up your environment in Unity
 
-The introduced message protos for the communication with the Isaac Sim need to be specified inside of the Unity App. You can find more information about how to use the Unity
-App here: https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#getting-started-with-editor-mode
+Once you downloaded and installed the SDK, isaac sim and have loged in into your unity account you can create a new unity project 
+You can find more information about how to use the Unity App here: https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#getting-started-with-editor-mode
 
+As described in the link above, you can open the unity sample project by using the following command:
+
+``` bob@desktop:~$: Unity/Hub/Editor/2019.3.0f6/Editor/Unity -projectPath isaac_sim_unity3d/projects/sample -logfile ``` 
+If you have a higher 2019.3 version, you will first see a popup window that states ***“Opening Project in Non-Matching Editor Installation”*** - you can simply 
+click ***continue*** here. When the sample project is fully loaded you can swicht between the ***medium warehouse** and the ***small warehouse**, in this tutorial 
+we will use the ***small warehouse*** scene. You can simply double click the scene and the scene will load. 
+
+The ***small warehouse** scene comes with almost everything you need to try out our example project.
+You just have to add a **Teleport script***. (The teleport will be triggered whenever the robot need to be reset). Adding the Teleport script is simple: 
+First you click on the ***Carter_Wheeled*** on the left menu bar and then on the right menu bar you click ***Add Component***, you can take the following image as
+ guidance.
+
+
+![Unity Robot](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Small_warehouse_plus_teleport.png)
+
+As a part of the ***small warehouse*** scene, the ***Carter_Wheeled*** provides us with everything we need for our example project, that is:
+
+*A differential drive
+*A Color Camera
+*A global position script
+*A Teleport script for reseting (needs to be added to the carter robot as described above)
+
+
+
+
+####Custom Environments: 
+
+But you can also create your own environments using the Unity App. For some of our works we have build a custom maze environment that a STR robot needed to solve
+based on visual input. If you are interested in creating you own applications we recommend reading this documentation entry:
+https://docs.nvidia.com/isaac/archive/2020.1/doc/simulation/unity3d.html#creating-a-unity-project-with-isaacsim 
 
 
 ![Unity Robot](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_Robot.PNG)
@@ -61,12 +91,11 @@ camera. Camera images can thus be received under **navsim/output/color**.
 Messages that controll the STR robot have to be sent to **navsim/input/base_command**
 If you want these topics to have different names you can simply change them inside the unity editor. 
 
-Even simpler is the use of the already provided **small_warehouse** scene, this scene comes with almost everything you need to try out our example project.
-You just have to add a **Teleport script** to the robot you want to teleport when the reset function is triggered. In the end your robot should have the following 
-parts:
-
 
 ![Unity Topics3](https://github.com/BeneHei/Visual_Navigation_RL/blob/main/Unity_topics_example_project.png)
+
+
+The introduced message protos for the communication with the Isaac Sim need to be specified inside of the Unity App. 
 
 ### After you finished creating your unity environment in the editor mode, we recommend building the application
 
@@ -109,6 +138,9 @@ The actions will be send to the Isaac Sim which will then use those actions to a
 The robot pose will be received from the Isaac Sim
 
 
+
+
+
 ### To run our demo RL application, you have to put the provided py_example_task folder into your local isaac/apps folder
 
 Then start a unity simulation (either in editor or in play mode) that has the following parts available:
@@ -117,12 +149,17 @@ Then start a unity simulation (either in editor or in play mode) that has the fo
 * A pose publisher (bodies)
 * A Teleport script
 
+(The ***smalle warehouse*** scene with the teleport script modification provides all this)
+
 Then run the following command inside your isaac folder:
 
 
 ```
 bob@desktop:~/isaac$ bazel run //apps/py_example_task
 ```
+
+
+
 
 
 ## Some of our Results
